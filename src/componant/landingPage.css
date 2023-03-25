@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.container {
+  /* background-color: blue; */
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.section-utility {
+  width: 50vw;
+  height: 100vh;
+  text-align: center;
+  padding-top: 15vh;
+  font-size: 3.4vw;
+}
+.customer-section {
+  background-color: rgb(224, 255, 245);
+}
+.expert-section {
+  background-color: rgb(228, 228, 228);
+}
+.heading-primary {
+  font-family: "Roboto", sans-serif;
+  display: block;
+}
+.section-description {
+  font-style: italic;
+  font-size: 1.6vw;
+  display: block;
+  margin: 2.5vw 10vw;
+}
+.btn {
+  /* display: block; */
+  margin: 1.4vw 0 0 2vw;
+  padding: 0.6vw 2.4vw;
+  font-size: 1.4vw;
+  border-radius: 5px;
+}
+.btn-login-customer {
+  border: none;
+  background-color: green;
+  color: #fff;
+}
+.btn-login-expert {
+  border: none;
+  border: 1px solid black;
+  background-color: #fff;
+}
+.singup-text {
+  font-size: 1.6vw;
+  color: rgb(73, 73, 73);
+  display: block;
+  margin-top: 5vh;
+}
+.form {
+  /* border: 2px solid black; */
+  margin: 5vh 6vw;
+  padding: 5vh 0vw;
+  background-color: #fff;
+}
+.input-tag {
+  font-size: 1.4vw;
+}
+.input-container {
+  font-size: 2.4vw;
+}
