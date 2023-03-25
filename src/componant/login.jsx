@@ -35,7 +35,7 @@ class Login extends Component {
 
   render() {
     // console.log(this.props);
-    const { name, class_name, api, signup } = this.props;
+    const { name, class_name } = this.props;
     return (
       <div style={{ width: "50vw" }}>
         <MDBContainer

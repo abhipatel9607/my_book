@@ -9,7 +9,6 @@ import {
   MDBCardImage,
   MDBInput,
   MDBIcon,
-  MDBCheckbox,
 } from "mdb-react-ui-kit";
 import { getPostRequest } from "../util/util";
 
