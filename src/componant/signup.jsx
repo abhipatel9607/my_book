@@ -11,6 +11,7 @@ import {
   MDBIcon,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
+import { getPostRequest } from "../util/util";
 
 class SignupPage extends Component {
   state = {};
@@ -21,8 +22,6 @@ class SignupPage extends Component {
     const email = document.getElementById("form2").value;
     const password = document.getElementById("form3").value;
     const role = this.props.match.params.class_name;
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/JSON");
 
     const userData = JSON.stringify({
       name: name,
@@ -30,17 +29,23 @@ class SignupPage extends Component {
       role: role,
       password: password,
     });
-    const requestOption = {
-      method: "POST",
-      headers: myHeaders,
-      body: userData,
-      redirect: "follow",
-    };
 
-    fetch("https://mybooks-an3b.onrender.com/api/user/register", requestOption)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+    getPostRequest("register", userData);
+
+    // const myHeaders = new Headers();
+    // myHeaders.append("Content-Type", "application/JSON");
+
+    // const requestOption = {
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: userData,
+    //   redirect: "follow",
+    // };
+
+    // fetch("https://mybooks-an3b.onrender.com/api/user/register", requestOption)
+    //   .then((response) => response.text())
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log(error));
   };
   render() {
     // console.log(this.props);

@@ -10,14 +10,12 @@ class LandingPage extends Component {
         name: "Customer",
         api: "",
         key: 1,
-        signup: false,
       },
       {
         class_name: "expert",
         name: "Expert",
         api: "",
         key: 2,
-        signup: false,
       },
     ],
   };

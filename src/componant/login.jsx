@@ -1,81 +1,124 @@
 import React, { Component } from "react";
 import "./landingPage.css";
 import { Link } from "react-router-dom";
+import {
+  MDBContainer,
+  MDBInput,
+  MDBCheckbox,
+  MDBBtn,
+  MDBIcon,
+} from "mdb-react-ui-kit";
+
+import { getPostRequest } from "../util/util";
 
 class Login extends Component {
   state = {};
+
   loginUser = (e) => {
     e.preventDefault();
-    const name = document.querySelector(
-      `.${this.props.class_name}-username`
+    const name = document.getElementById(
+      `${this.props.class_name}-email`
     ).value;
-    const password = document.querySelector(
-      `.${this.props.class_name}-pass`
+    const password = document.getElementById(
+      `${this.props.class_name}-pass`
     ).value;
     const role = this.props.class_name;
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/JSON");
+    // console.log(name, password, role);
 
     const userData = JSON.stringify({
       email: name,
       role: role,
       password: password,
     });
-    const requestOption = {
-      method: "POST",
-      headers: myHeaders,
-      body: userData,
-      redirect: "follow",
-    };
-
-    fetch("https://mybooks-an3b.onrender.com/api/user/login", requestOption)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+    getPostRequest("login", userData);
   };
 
   render() {
     // console.log(this.props);
     const { name, class_name, api, signup } = this.props;
     return (
-      <div className={`${class_name}-section section-utility`}>
-        <span className="heading-primary">For {name}</span>
-        <div className="form">
-          <form onSubmit={this.handleSubmit}>
-            <div className="input-container">
-              <label className="input-tag">Username: </label>
-              <input
-                type="text"
-                name="uname"
-                className={`${class_name}-username`}
-                required
-              />
-            </div>
-            <div className="input-container">
-              <label className="input-tag">Password: </label>
-              <input
-                type="password"
-                name="pass"
-                className={`${class_name}-pass`}
-                required
-              />
-            </div>
-            <div className="button-container">
-              {/* <input type="submit" /> */}
-              <button
-                className={`btn btn-login-${class_name}`}
-                onClick={this.loginUser}
-              >
-                Login
-              </button>
-            </div>
-          </form>
-        </div>
-        <span className="singup-text">Don't have an account?</span>
+      <div style={{ width: "50vw" }}>
+        <MDBContainer
+          className="p-3  d-flex flex-column"
+          style={{ width: "70%", marginTop: "5rem" }}
+        >
+          <h2 style={{ marginBottom: "1.5rem" }}>For {name}</h2>
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Email address"
+            id={`${class_name}-email`}
+            type="email"
+          />
+          <MDBInput
+            wrapperClass="mb-4"
+            label="Password"
+            id={`${class_name}-pass`}
+            type="password"
+          />
 
-        <Link to={`/createAccount/${class_name}`}>
-          <button onClick={this.mountCounter}>sign up</button>
-        </Link>
+          <div className="d-flex justify-content-between mx-3 mb-4">
+            <MDBCheckbox
+              name="flexCheck"
+              value=""
+              id="flexCheckDefault"
+              label="Remember me"
+            />
+            <a href="!#">Forgot password?</a>
+          </div>
+
+          <MDBBtn onClick={this.loginUser} className="mb-4">
+            Sign in
+          </MDBBtn>
+
+          <div className="text-center">
+            <p>
+              Not a member?{" "}
+              <Link to={`/createAccount/${class_name}`}>Register</Link>
+            </p>
+            <p>or sign up with:</p>
+
+            <div
+              className="d-flex justify-content-between mx-auto"
+              style={{ width: "40%" }}
+            >
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="facebook-f" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="twitter" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="google" size="sm" />
+              </MDBBtn>
+
+              <MDBBtn
+                tag="a"
+                color="none"
+                className="m-1"
+                style={{ color: "#1266f1" }}
+              >
+                <MDBIcon fab icon="github" size="sm" />
+              </MDBBtn>
+            </div>
+          </div>
+        </MDBContainer>
       </div>
     );
   }
